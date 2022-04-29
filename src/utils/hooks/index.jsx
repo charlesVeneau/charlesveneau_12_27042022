@@ -1,22 +1,37 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+/**
+ * Retrive data from API server using Axios
+ * @param {string} url
+ * @return {Object}
+ * @author Charles
+ * @version 1.0
+ */
+
 export function useAxios(url) {
   const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!url) return;
+    setLoading(true);
     async function fetchData() {
-      const response = await axios.get(url);
-      const data = await response.data;
-      setData(data.data);
-      setLoading(false);
+      try {
+        const response = await axios.get(url);
+        const data = await response.data;
+        setData(data.data);
+      } catch (err) {
+        console.log(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
     }
 
-    setLoading(true);
     fetchData();
   }, [url]);
 
-  return { data, isLoading };
+  return { data, isLoading, error };
 }

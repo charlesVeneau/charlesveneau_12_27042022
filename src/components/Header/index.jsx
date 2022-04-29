@@ -1,7 +1,6 @@
 import colors from '../../utils/style/color';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useAxios } from '../../utils/hooks';
 
 const HeaderBlock = styled.header`
   & p {
@@ -17,12 +16,11 @@ const HeaderTitle = styled.h1`
   }
 `;
 
-function Header({ user }) {
-  const { data, isLoading } = useAxios(`http://localhost:3000/user/${user}`);
+function Header({ firstName }) {
   return (
     <HeaderBlock>
       <HeaderTitle>
-        Bonjour <span>{data.userInfos.firstName}</span>
+        Bonjour <span>{firstName}</span>
       </HeaderTitle>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </HeaderBlock>
@@ -30,7 +28,7 @@ function Header({ user }) {
 }
 
 Header.propTypes = {
-  user: PropTypes.number,
+  firstName: PropTypes.string,
 };
 
 export default Header;
