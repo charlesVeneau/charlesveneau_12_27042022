@@ -32,7 +32,7 @@ font-size: 1.33em;
 function NavbarMain() {
     return ( 
         <Navbar>
-            <img src={logo} alt="sportsee logo" />
+            <Link href='#'><img src={logo} alt="sportsee logo" /></Link>
             <NavbarList>
                 <ListElement><Link href="#">Accueil</Link></ListElement>
                 <ListElement><Link href="#">Profil</Link></ListElement>
