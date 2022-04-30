@@ -1,5 +1,14 @@
+import CounterCards from '../CounterCards';
+import styled from 'styled-components';
+
+const DashboardBlock = styled.section``;
+
 function Dashboard() {
-    return ( <h2>Dashboard</h2> );
+  return (
+    <DashboardBlock>
+      <CounterCards />
+    </DashboardBlock>
+  );
 }
 
 export default Dashboard;

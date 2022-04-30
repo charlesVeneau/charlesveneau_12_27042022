@@ -3,8 +3,8 @@ import axios from 'axios';
 
 /**
  * Retrive data from API server using Axios
- * @param {string} url
- * @return {Object}
+ * @param { String } url
+ * @return { Object }
  * @author Charles
  * @version 1.0
  */

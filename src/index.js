@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyle from './utils/style/GlobalStyle'
-
+import GlobalStyle from './utils/style/GlobalStyle';
+import { UserProvider } from './utils/context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <GlobalStyle/>
-    <App />
+    <UserProvider>
+      <GlobalStyle />
+      <App />
+    </UserProvider>
   </React.StrictMode>
 );
 

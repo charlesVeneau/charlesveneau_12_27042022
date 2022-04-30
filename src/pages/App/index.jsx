@@ -3,7 +3,8 @@ import NavbarSecond from '../../components/NavbarSecond';
 import Header from '../../components/Header';
 import Dashboard from '../../components/Dashboard';
 import styled from 'styled-components';
-import { useAxios } from '../../utils/hooks';
+import { useContext } from 'react';
+import { UserContext } from '../../utils/context';
 
 const AppBlock = styled.div`
   max-width: 1800px;
@@ -22,12 +23,8 @@ const Container = styled.div`
   padding: 69px 109px;
 `;
 
-const userID = 12;
-
 function App() {
-  const { data, isLoading, error } = useAxios(
-    `http://localhost:3000/user/${userID}`
-  );
+  const { data, isLoading, error } = useContext(UserContext);
   if (!isLoading && !error)
     return (
       <AppBlock>
@@ -35,7 +32,7 @@ function App() {
         <MainBlock>
           <NavbarSecond />
           <Container>
-            <Header firstName={data ? data.userInfos.firstName : 'Charles'} />
+            <Header firstName={data ? data.userInfos.firstName : ''} />
             <Dashboard />
           </Container>
         </MainBlock>
