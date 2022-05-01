@@ -76,11 +76,25 @@ function addComaToNumber(value) {
 }
 
 function CounterCard({ keyData, value }) {
+  const keyDataFrench = () => {
+    switch (keyData) {
+      case 'calorieCount':
+        return 'calories';
+      case 'proteinCount':
+        return 'proteines';
+      case 'carbohydrateCount':
+        return 'glucides';
+      case 'lipidCount':
+        return 'lipides';
+      default:
+        break;
+    }
+  };
   return (
     <Card>
-      <CardImg className={keyData}>
+      <CardImg className={keyDataFrench()}>
         {(() => {
-          switch (keyData) {
+          switch (keyDataFrench()) {
             case 'calories':
               return <img src={calories} alt="" />;
             case 'proteines':
@@ -97,9 +111,9 @@ function CounterCard({ keyData, value }) {
       <CardInfo>
         <CardValue>
           {value >= 1000 ? addComaToNumber(value) : value}
-          {keyData === 'calories' ? 'kCal' : 'g'}
+          {keyDataFrench() === 'calories' ? 'kCal' : 'g'}
         </CardValue>
-        <CardKey>{keyData}</CardKey>
+        <CardKey>{keyDataFrench()}</CardKey>
       </CardInfo>
     </Card>
   );
