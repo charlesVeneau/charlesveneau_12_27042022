@@ -12,10 +12,9 @@ const AppBlock = styled.div`
 `;
 
 const MainBlock = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: stretch;
-  height: calc(100vh - 91px);
+  display: grid;
+  grid-template-columns: 117px auto;
+  grid-template-rows: calc(100vh - 91px);
 `;
 
 const Container = styled.div`

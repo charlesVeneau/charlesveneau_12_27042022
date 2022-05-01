@@ -4,6 +4,7 @@ const colors = {
   tertiary: '#ffffff',
   lightGrey: '#FBFBFB',
   mediumGrey: '#74798C',
+  lowBlack: '#282D30',
 };
 
 export default colors;

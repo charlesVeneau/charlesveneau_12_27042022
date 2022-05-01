@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
 
-const CounterCardsBlock = styled.aside``;
+const CounterCardsBlock = styled.aside`
+  grid-column-start: 4;
+  grid-row-end: span 2;
+`;
 
 function CounterCards() {
   const { data, isLoading, error } = useContext(UserContext);
@@ -11,7 +14,6 @@ function CounterCards() {
 
   return (
     <CounterCardsBlock>
-      <h3>CounterCards</h3>
       <CounterCard keyData="calories" value={keyData.calorieCount} />
       <CounterCard keyData="proteines" value={keyData.proteinCount} />
       <CounterCard keyData="glucides" value={keyData.carbohydrateCount} />

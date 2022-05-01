@@ -12,7 +12,7 @@ const AsideNavbar = styled.aside`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 3%;
+  padding-bottom: 39px;
   width: 117px;
   height: 100%;
   gap: 25%;
@@ -23,7 +23,7 @@ const Copyright = styled.p`
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   font-size: 0.67em;
-  font-weight: medium;
+  font-weight: 500;
 `;
 
 const NavbarList = styled.ul`
