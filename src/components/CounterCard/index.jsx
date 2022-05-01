@@ -14,7 +14,7 @@ const Card = styled.div`
   align-items: center;
   gap: 24px;
   & + & {
-    margin-top: 30px;
+    margin-top: 39px;
   }
 `;
 

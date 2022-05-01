@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const HeaderBlock = styled.header`
+  margin-bottom: 60px;
   & p {
     font-weight: regular;
   }
@@ -11,6 +12,7 @@ const HeaderBlock = styled.header`
 const HeaderTitle = styled.h1`
   font-size: 2.67em;
   margin-top: 0;
+  font-weight: 500;
   & span {
     color: ${colors.secondary};
   }
