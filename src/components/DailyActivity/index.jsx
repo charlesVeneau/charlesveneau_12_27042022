@@ -52,7 +52,7 @@ const GraphLegendText = styled.p`
     height: 8px;
     border-radius: 12px;
     background-color: ${(props) =>
-      props.calories ? colors.lowBlack : colors.secondaryDarken};
+      props.calories ? colors.secondaryDarken : colors.lowBlack};
   }
 `;
 
