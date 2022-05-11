@@ -94,10 +94,7 @@ function CustomToolTip({ payload, label, active }) {
 }
 
 function DailyActivity() {
-  const userID = 12;
-  const { data, isLoading, error } = useAxios(
-    `http://localhost:3000/user/${userID}/activity`
-  );
+  const { data, isLoading, error } = useAxios(`/activity`);
   const sessions = data.sessions;
 
   if (!isLoading && !error)

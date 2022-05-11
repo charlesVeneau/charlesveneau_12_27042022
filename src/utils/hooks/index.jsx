@@ -3,23 +3,26 @@ import axios from 'axios';
 
 /**
  * Retrive data from API server using Axios
- * @param { String } url
+ * @param { String } endpoint
  * @return { Object }
  * @author Charles
  * @version 1.0
  */
 
-export function useAxios(url) {
+export function useAxios(endpoint) {
   const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const userId = 12;
 
   useEffect(() => {
-    if (!url) return;
+    if (!endpoint) return;
     setLoading(true);
     async function fetchData() {
       try {
-        const response = await axios.get(url);
+        const response = await axios.get(
+          `http://localhost:3000/user/${userId}${endpoint}`
+        );
         const data = await response.data;
         setData(data.data);
       } catch (err) {
@@ -31,7 +34,7 @@ export function useAxios(url) {
     }
 
     fetchData();
-  }, [url]);
+  }, [endpoint]);
 
   return { data, isLoading, error };
 }

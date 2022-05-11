@@ -24,10 +24,7 @@ const AverageGraph = styled.div`
 `;
 
 function AverageSession() {
-  const userId = 12;
-  const { data, isLoading, error } = useAxios(
-    `http://localhost:3000/user/${userId}/average-sessions`
-  );
+  const { data, isLoading, error } = useAxios(`/average-sessions`);
 
   if (!isLoading && !error)
     return (

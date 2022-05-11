@@ -23,18 +23,15 @@ const IntensityGraph = styled.div`
  * @returns { Array }
  */
 
-function getFormattedPerformances(data) {
+/* function getFormattedPerformances(data) {
   data.forEach((performance) => {
     performance.kind = data.kind.toString(performance.kind);
   });
   console.log(data);
-}
+} */
 
 function IntensityBlock() {
-  const userId = 12;
-  const { data, isLoading, error } = useAxios(
-    `http://localhost:3000/user/${userId}/performance`
-  );
+  const { data, isLoading, error } = useAxios(`/performance`);
   // getFormattedPerformances(data);
   console.log(data);
   if (!isLoading && !error)

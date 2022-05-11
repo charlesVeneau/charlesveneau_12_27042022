@@ -11,11 +11,9 @@ export const UserContext = createContext();
  * @version 1.0
  */
 export const UserProvider = ({ children }) => {
-  const userID = 12;
+  //const userID = 12;
 
-  const { data, isLoading, error } = useAxios(
-    `http://localhost:3000/user/${userID}`
-  );
+  const { data, isLoading, error } = useAxios('/');
   return (
     <UserContext.Provider value={{ data, isLoading, error }}>
       {children}
