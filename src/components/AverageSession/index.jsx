@@ -23,33 +23,57 @@ const AverageGraph = styled.div`
   color: ${colors.tertiary};
 `;
 
+const CustomToolTipBlock = styled.div`
+  color: ${colors.primary};
+  background-color: ${colors.tertiary};
+  padding: 4px 10px;
+  p {
+    font-size: 10px;
+    font-weight: 500;
+  }
+`;
+
+/**
+ * Set a cutom tool tip for the graph bar
+ * @param {string} payload
+ * @param {string} label
+ * @param {boolean} active
+ * @returns { components }
+ */
+function CustomToolTip({ payload, label, active }) {
+  if (active) {
+    return (
+      <CustomToolTipBlock className="custom-tooltip">
+        {payload.map((element, index) => {
+          return (
+            <p key={`${element}-${index}`}>
+              {element.value}
+              min
+            </p>
+          );
+        })}
+      </CustomToolTipBlock>
+    );
+  }
+}
+
 function AverageSession() {
   const { data, isLoading, error } = useAxios(`/average-sessions`);
 
   if (!isLoading && !error)
     return (
       <AverageGraph>
-        <ResponsiveContainer width="100%" height="100%">
+        <p>Durée moyenne des sessions</p>
+        <ResponsiveContainer width="100%" height="80%">
           <AreaChart
-            width={730}
-            height={250}
+            // width={730}
+            // height={250}
             data={data.sessions}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
-            <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-              </linearGradient>
-              <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-              </linearGradient>
-            </defs>
             <XAxis dataKey="day" />
-            <YAxis />
             {/* <CartesianGrid strokeDasharray="3 3" /> */}
-            <Tooltip />
+            <Tooltip content={<CustomToolTip />} />
             <Area
               type="monotone"
               dataKey="sessionLength"
