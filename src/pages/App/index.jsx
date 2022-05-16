@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
 
 const AppBlock = styled.div`
-  max-width: 1800px;
   margin: 0 auto;
 `;
 

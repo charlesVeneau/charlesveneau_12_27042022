@@ -33,7 +33,6 @@ const IntensityGraph = styled.div`
 function IntensityBlock() {
   const { data, isLoading, error } = useAxios(`/performance`);
   // getFormattedPerformances(data);
-  console.log(data);
   if (!isLoading && !error)
     return (
       <IntensityGraph>

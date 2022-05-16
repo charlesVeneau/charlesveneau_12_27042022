@@ -1,3 +1,4 @@
+import mockedData from '../data/mockedData.json';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -14,10 +15,34 @@ export function useAxios(endpoint) {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const userId = 12;
+  const isMockedData = true;
 
   useEffect(() => {
     if (!endpoint) return;
     setLoading(true);
+
+    function getMockedData() {
+      const data = mockedData;
+      switch (endpoint) {
+        case '/':
+          setData(data.data);
+          break;
+        case '/activity':
+          setData(data['activity']);
+          break;
+        case '/average-sessions':
+          setData(data['average-sessions']);
+          break;
+        case '/performance':
+          setData(data['performance']);
+          break;
+        default:
+          setError(true);
+          break;
+      }
+      setLoading(false);
+    }
+
     async function fetchData() {
       try {
         const response = await axios.get(
@@ -33,8 +58,8 @@ export function useAxios(endpoint) {
       }
     }
 
-    fetchData();
-  }, [endpoint]);
+    isMockedData ? getMockedData() : fetchData();
+  }, [endpoint, isMockedData]);
 
   return { data, isLoading, error };
 }
