@@ -98,9 +98,15 @@ function AverageSession() {
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart
             data={sessions}
-            margin={{ top: 10, right: 10, left: 10, bottom: 20 }}
+            margin={{ top: 10, right: 0, left: 5, bottom: 20 }}
           >
-            <XAxis dataKey="day" />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              stroke={colors.tertiary}
+              fillOpacity={0.3}
+            />
             <Tooltip content={<CustomToolTip />} />
             <Area
               type="monotone"
