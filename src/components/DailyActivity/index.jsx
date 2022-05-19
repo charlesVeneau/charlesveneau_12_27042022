@@ -93,6 +93,28 @@ function CustomToolTip({ payload, label, active }) {
   }
 }
 
+function CustomXLabel({ x, y, payload }) {
+  console.log(x);
+  const dateArray = payload.value.split('-');
+  const dayDate = dateArray[dateArray.length - 1];
+  return (
+    <text
+      orientation="bottom"
+      width="903"
+      height="30"
+      type="category"
+      x={x}
+      y={y + 16}
+      stroke="none"
+      fill="#989EAC"
+      class="recharts-text recharts-cartesian-axis-tick-value"
+      text-anchor="middle"
+    >
+      {dayDate[0] === '0' ? dayDate[1] : dayDate}
+    </text>
+  );
+}
+
 function DailyActivity() {
   const { data, isLoading, error } = useAxios(`/activity`);
   const sessions = data.sessions;
@@ -109,8 +131,12 @@ function DailyActivity() {
         </GraphInfo>
         <ResponsiveContainer width="100%" height={215}>
           <BarChart data={sessions} barCategoryGap={40}>
-            <CartesianGrid vertical={false} strokeDasharray="4" />
-            <XAxis dataKey="day" axisLine={true} />
+            <CartesianGrid
+              vertical={false}
+              strokeDasharray="4"
+              horizontalPoints={[126, 63, 10]}
+            />
+            <XAxis dataKey="day" axisLine={true} tick={CustomXLabel} />
             <YAxis
               yAxisId="left"
               dataKey="calories"
@@ -122,19 +148,22 @@ function DailyActivity() {
               dataKey="kilogram"
               orientation="right"
               axisLine={false}
-              interval="preserveStartEnd"
+              tick={{ dy: 0 }}
+              tickLine={false}
+              type="number"
+              domain={['dataMin - 2', 'dataMax + 2']}
             />
             <Tooltip content={<CustomToolTip />} />
             <Bar
-              yAxisId="left"
-              dataKey="calories"
+              yAxisId="right"
+              dataKey="kilogram"
               fill={colors.lowBlack}
               barSize={7}
               radius={[3, 3, 0, 0]}
             />
             <Bar
-              yAxisId="right"
-              dataKey="kilogram"
+              yAxisId="left"
+              dataKey="calories"
               fill={colors.secondaryDarken}
               barSize={7}
               radius={[3, 3, 0, 0]}
