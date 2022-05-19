@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const HeaderBlock = styled.header`
   margin-bottom: 60px;
   & p {
-    font-weight: regular;
+    font-weight: 400;
+    font-size: 1em;
   }
 `;
 

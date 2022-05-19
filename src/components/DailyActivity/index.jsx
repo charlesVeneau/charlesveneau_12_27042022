@@ -94,7 +94,6 @@ function CustomToolTip({ payload, label, active }) {
 }
 
 function CustomXLabel({ x, y, payload }) {
-  console.log(x);
   const dateArray = payload.value.split('-');
   const dayDate = dateArray[dateArray.length - 1];
   return (
@@ -107,8 +106,8 @@ function CustomXLabel({ x, y, payload }) {
       y={y + 16}
       stroke="none"
       fill="#989EAC"
-      class="recharts-text recharts-cartesian-axis-tick-value"
-      text-anchor="middle"
+      className="recharts-text recharts-cartesian-axis-tick-value"
+      textAnchor="middle"
     >
       {dayDate[0] === '0' ? dayDate[1] : dayDate}
     </text>
@@ -148,7 +147,6 @@ function DailyActivity() {
               dataKey="kilogram"
               orientation="right"
               axisLine={false}
-              tick={{ dy: 0 }}
               tickLine={false}
               type="number"
               domain={['dataMin - 2', 'dataMax + 2']}
