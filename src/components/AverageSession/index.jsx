@@ -1,15 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
 import { useAxios } from '../../utils/hooks';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  Tooltip,
-  AreaChart,
-  Area,
-  ResponsiveContainer,
-} from 'recharts';
+import { XAxis, Tooltip, AreaChart, Area, ResponsiveContainer } from 'recharts';
 
 const AverageGraph = styled.div`
   background-color: ${colors.secondary};
@@ -98,14 +90,14 @@ function AverageSession() {
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart
             data={sessions}
-            margin={{ top: 10, right: 0, left: 5, bottom: 20 }}
+            margin={{ top: 10, right: 6, left: 6, bottom: 20 }}
           >
             <XAxis
               dataKey="day"
               axisLine={false}
               tickLine={false}
               stroke={colors.tertiary}
-              fillOpacity={0.3}
+              fillOpacity={0.5}
             />
             <Tooltip content={<CustomToolTip />} />
             <Area
