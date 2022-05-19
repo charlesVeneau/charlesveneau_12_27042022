@@ -15,35 +15,70 @@ const IntensityGraph = styled.div`
   grid-column: 2;
   height: 263px;
   color: ${colors.tertiary};
+  .recharts-polar-grid-angle {
+    line {
+      stroke: none;
+    }
+  }
+`;
+const CustomTextTick = styled.text`
+  font-size: 12px;
+  top: 8px;
 `;
 
 /**
- * Get response from API and format to translate in french and push it to data Array
- * @param { Object } data
- * @returns { Array }
+ * Customize payload value to get radarChart tick string in french
+ * @param { Number } x
+ * @param { Number } y
+ * @param { Object } payload
+ * @returns { Html }
  */
-
-/* function getFormattedPerformances(data) {
-  data.forEach((performance) => {
-    performance.kind = data.kind.toString(performance.kind);
-  });
-  console.log(data);
-} */
+function CustomRadarLabel({ x, y, payload }) {
+  const cos = Math.cos((-payload.coordinate * Math.PI) / 180);
+  let tick = '';
+  switch (payload.value) {
+    case 1:
+      tick = 'Cardio';
+      break;
+    case 2:
+      tick = 'Energie';
+      break;
+    case 3:
+      tick = 'Endurance';
+      break;
+    case 4:
+      tick = 'Force';
+      break;
+    case 5:
+      tick = 'Vitesse';
+      break;
+    case 6:
+      tick = 'Intensité';
+      break;
+    default:
+      tick = '';
+  }
+  return (
+    <CustomTextTick
+      x={x}
+      y={y > 200 ? y + 10 : y}
+      type="category"
+      textAnchor={cos < 0.09 && cos > 0 ? 'middle' : cos >= 0 ? 'start' : 'end'}
+    >
+      {tick}
+    </CustomTextTick>
+  );
+}
 
 function IntensityBlock() {
   const { data, isLoading, error } = useAxios(`/performance`);
-  // getFormattedPerformances(data);
-  if (!isLoading && !error)
+  if (!isLoading && !error) {
     return (
       <IntensityGraph>
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={data.data}>
+          <RadarChart data={data.data} fill={colors.tertiary}>
             <PolarGrid />
-            <PolarAngleAxis
-              dataKey="kind"
-              axisLine={false}
-              color={colors.tertiary}
-            />
+            <PolarAngleAxis dataKey="kind" tick={CustomRadarLabel} />
             <Radar
               name="performance"
               dataKey="value"
@@ -54,6 +89,7 @@ function IntensityBlock() {
         </ResponsiveContainer>
       </IntensityGraph>
     );
+  }
 }
 
 export default IntensityBlock;
