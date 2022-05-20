@@ -1,5 +1,3 @@
-[![forthebadge](https://forthebadge.com/generator/?plabel=made+with&slabel=REACT)](https://forthebadge.com)
-
 # Project 12 - Front-end Dashboard React
 
 This project contains all the source code to run the front-end dashboard of the Openclassrooms project 12.
