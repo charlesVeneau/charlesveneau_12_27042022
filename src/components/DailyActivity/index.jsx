@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Error from '../Error';
 import { useAxios } from '../../utils/hooks';
 import colors from '../../utils/style/color';
 import breakpoints from '../../utils/style/breakpoints';
@@ -141,7 +142,7 @@ function DailyActivity() {
           </GraphLegendBlock>
         </GraphInfo>
         <ResponsiveContainer width="100%" height={215}>
-          <BarChart data={sessions}>
+          <BarChart data={sessions} barCategoryGap={40}>
             <CartesianGrid
               vertical={false}
               strokeDasharray="4"
@@ -180,6 +181,12 @@ function DailyActivity() {
             />
           </BarChart>
         </ResponsiveContainer>
+      </DailyGraph>
+    );
+  else if (error)
+    return (
+      <DailyGraph>
+        <Error />
       </DailyGraph>
     );
 }

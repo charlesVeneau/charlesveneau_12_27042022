@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
 import breakpoints from '../../utils/style/breakpoints';
+import Error from '../Error';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
 import {
@@ -19,7 +20,8 @@ const ScoreGraph = styled.div`
   @media screen and (min-width: ${breakpoints.bigScreen}) {
     height: 263px;
   }
-  &:before {
+  ${
+    '' /*   &:before {
     content: '';
     background-color: ${colors.tertiary};
     position: absolute;
@@ -34,6 +36,7 @@ const ScoreGraph = styled.div`
       width: calc(66px * 2);
       height: calc(66px * 2);
     }
+  } */
   }
 `;
 
@@ -73,7 +76,6 @@ const ScoreGraphLegend = styled.p`
 function ScoreBlock() {
   const { data, isLoading, error } = useContext(UserContext);
   const todayScore = [{ name: 'todayScore', value: data.todayScore * 100 }];
-
   if (!isLoading && !error) {
     return (
       <ScoreGraph>
@@ -103,6 +105,12 @@ function ScoreBlock() {
             />
           </RadialBarChart>
         </ResponsiveContainer>
+      </ScoreGraph>
+    );
+  } else if (error) {
+    return (
+      <ScoreGraph>
+        <Error />;
       </ScoreGraph>
     );
   }

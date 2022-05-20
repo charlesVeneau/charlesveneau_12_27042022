@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { useAxios } from '../hooks';
+import Error from '../../components/Error';
 
 export const UserContext = createContext();
 
@@ -11,8 +12,6 @@ export const UserContext = createContext();
  * @version 1.0
  */
 export const UserProvider = ({ children }) => {
-  //const userID = 12;
-
   const { data, isLoading, error } = useAxios('/');
   return (
     <UserContext.Provider value={{ data, isLoading, error }}>

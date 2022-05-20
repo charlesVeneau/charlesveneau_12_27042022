@@ -2,6 +2,7 @@ import NavbarMain from '../../components/NavbarMain';
 import NavbarSecond from '../../components/NavbarSecond';
 import Header from '../../components/Header';
 import Dashboard from '../../components/Dashboard';
+import Error from '../../components/Error';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
@@ -31,14 +32,17 @@ const Container = styled.section`
 
 function App() {
   const { data, isLoading, error } = useContext(UserContext);
-  if (!isLoading && !error)
+  if (!isLoading)
     return (
       <AppBlock>
         <NavbarMain />
         <MainBlock>
           <NavbarSecond />
           <Container>
-            <Header firstName={data ? data.userInfos.firstName : ''} />
+            {error && <Error />}
+            {!error && (
+              <Header firstName={data ? data.userInfos.firstName : ''} />
+            )}
             <Dashboard />
           </Container>
         </MainBlock>

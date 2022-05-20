@@ -38,7 +38,7 @@ export function useAxios(endpoint) {
           break;
         default:
           setError(true);
-          break;
+          setData({});
       }
       setLoading(false);
     }

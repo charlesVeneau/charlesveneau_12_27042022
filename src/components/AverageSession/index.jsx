@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import Error from '../Error';
 import breakpoints from '../../utils/style/breakpoints';
 import { useAxios } from '../../utils/hooks';
 import { XAxis, Tooltip, AreaChart, Area, ResponsiveContainer } from 'recharts';
@@ -123,6 +124,12 @@ function AverageSession() {
             />
           </AreaChart>
         </ResponsiveContainer>
+      </AverageGraph>
+    );
+  } else if (error) {
+    return (
+      <AverageGraph>
+        <Error />
       </AverageGraph>
     );
   }

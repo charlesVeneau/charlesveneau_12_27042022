@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Error from '../Error';
 import colors from '../../utils/style/color';
 import breakpoints from '../../utils/style/breakpoints';
 import { useAxios } from '../../utils/hooks';
@@ -38,7 +39,7 @@ const CustomTextTick = styled.text`
  * @param { Number } x
  * @param { Number } y
  * @param { Object } payload
- * @returns { Html }
+ * @returns { styled Html Element }
  */
 function CustomRadarLabel({ x, y, payload }) {
   const cos = Math.cos((-payload.coordinate * Math.PI) / 180);
@@ -101,6 +102,12 @@ function IntensityBlock() {
             />
           </RadarChart>
         </ResponsiveContainer>
+      </IntensityGraph>
+    );
+  } else if (error) {
+    return (
+      <IntensityGraph>
+        <Error />
       </IntensityGraph>
     );
   }

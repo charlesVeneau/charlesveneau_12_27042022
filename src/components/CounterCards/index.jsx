@@ -1,4 +1,5 @@
 import CounterCard from '../CounterCard';
+import Error from '../Error';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
@@ -25,6 +26,13 @@ function CounterCards() {
         })}
       </CounterCardsBlock>
     );
+  else if (error) {
+    return (
+      <CounterCardsBlock>
+        <Error />
+      </CounterCardsBlock>
+    );
+  }
 }
 
 export default CounterCards;
