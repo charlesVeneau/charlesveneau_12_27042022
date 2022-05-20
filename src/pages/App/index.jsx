@@ -5,6 +5,7 @@ import Dashboard from '../../components/Dashboard';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
+import breakpoints from '../../utils/style/breakpoints';
 
 const AppBlock = styled.div`
   margin: 0 auto;
@@ -12,13 +13,20 @@ const AppBlock = styled.div`
 
 const MainBlock = styled.div`
   display: grid;
-  grid-template-columns: 117px auto;
-  grid-template-rows: calc(100vh - 91px);
+  grid-template-columns: 90px auto;
+  grid-template-rows: calc(100vh - 70px);
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    grid-template-columns: 117px auto;
+    grid-template-rows: calc(100vh - 91px);
+  }
 `;
 
 const Container = styled.section`
   flex-grow: 1;
-  padding: 69px 109px;
+  padding: 30px 36px 0;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    padding: 69px 109px;
+  }
 `;
 
 function App() {

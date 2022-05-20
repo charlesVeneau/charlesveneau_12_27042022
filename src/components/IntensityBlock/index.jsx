@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import breakpoints from '../../utils/style/breakpoints';
 import { useAxios } from '../../utils/hooks';
 import {
   ResponsiveContainer,
@@ -13,17 +14,23 @@ const IntensityGraph = styled.div`
   background-color: ${colors.lowBlack};
   border-radius: 5px;
   grid-column: 2;
-  height: 263px;
+  height: 228px;
   color: ${colors.tertiary};
   .recharts-polar-grid-angle {
     line {
       stroke: none;
     }
   }
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    height: 263px;
+  }
 `;
 const CustomTextTick = styled.text`
-  font-size: 12px;
+  font-size: 10px;
   top: 8px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    font-size: 12px;
+  }
 `;
 
 /**
@@ -72,11 +79,18 @@ function CustomRadarLabel({ x, y, payload }) {
 
 function IntensityBlock() {
   const { data, isLoading, error } = useAxios(`/performance`);
+  function RadarOuter() {
+    return window.innerWidth <= 1083 ? 60 : 80;
+  }
   if (!isLoading && !error) {
     return (
       <IntensityGraph>
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={data.data} fill={colors.tertiary}>
+          <RadarChart
+            data={data.data}
+            fill={colors.tertiary}
+            outerRadius={RadarOuter()}
+          >
             <PolarGrid />
             <PolarAngleAxis dataKey="kind" tick={CustomRadarLabel} />
             <Radar

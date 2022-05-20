@@ -1,4 +1,5 @@
 import colors from '../../utils/style/color';
+import breakpoints from '../../utils/style/breakpoints';
 import styled from 'styled-components';
 import yoga from '../../assets/yoga.svg';
 import swimming from '../../assets/swimming.svg';
@@ -13,7 +14,10 @@ const AsideNavbar = styled.aside`
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 39px;
-  width: 117px;
+  width: 90px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    width: 117px;
+  }
   height: 100%;
   gap: 25%;
 `;
@@ -41,8 +45,20 @@ const Icon = styled.button`
   border: none;
   background-color: ${colors.tertiary};
   border-radius: 6px;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    width: 64px;
+    height: 64px;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+    @media screen and (min-width: ${breakpoints.bigScreen}) {
+      width: 32px;
+      height: 32px;
+    }
+  }
 `;
 
 function NavbarSecond() {

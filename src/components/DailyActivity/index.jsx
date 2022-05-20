@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useAxios } from '../../utils/hooks';
 import colors from '../../utils/style/color';
+import breakpoints from '../../utils/style/breakpoints';
 import {
   BarChart,
   Bar,
@@ -14,11 +15,21 @@ import {
 const DailyGraph = styled.div`
   background-color: ${colors.lightGrey};
   border-radius: 5px;
-  height: 320px;
-  padding: 24px 26px 24px 32px;
+  height: 280px;
+  padding: 18px 20px 18px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    height: 320px;
+    padding: 24px 26px 24px 32px;
+  }
+  .recharts-layer {
+    tspan,
+    .recharts-text {
+      font-size: 14px;
+    }
+  }
 `;
 
 const GraphInfo = styled.div`
@@ -42,6 +53,7 @@ const GraphLegendText = styled.p`
   color: ${colors.mediumGrey};
   font-size: 14px;
   position: relative;
+  margin: 0;
   &:before {
     content: '';
     position: absolute;
@@ -71,9 +83,9 @@ const CustomToolTipBlock = styled.div`
 
 /**
  * Set a cutom tool tip for the graph bar
- * @param {string} payload
- * @param {string} label
- * @param {boolean} active
+ * @param { string } payload
+ * @param { string } label
+ * @param { boolean } active
  * @returns { components }
  */
 function CustomToolTip({ payload, label, active }) {
@@ -129,7 +141,7 @@ function DailyActivity() {
           </GraphLegendBlock>
         </GraphInfo>
         <ResponsiveContainer width="100%" height={215}>
-          <BarChart data={sessions} barCategoryGap={40}>
+          <BarChart data={sessions}>
             <CartesianGrid
               vertical={false}
               strokeDasharray="4"

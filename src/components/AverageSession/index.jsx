@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import breakpoints from '../../utils/style/breakpoints';
 import { useAxios } from '../../utils/hooks';
 import { XAxis, Tooltip, AreaChart, Area, ResponsiveContainer } from 'recharts';
 
@@ -7,8 +8,16 @@ const AverageGraph = styled.div`
   background-color: ${colors.secondary};
   border-radius: 5px;
   grid-column: 1;
-  height: 263px;
+  height: 228px;
   color: ${colors.tertiary};
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    height: 263px;
+  }
+  .recharts-text {
+    tspan {
+      font-size: 12px;
+    }
+  }
 `;
 
 const CustomToolTipBlock = styled.div`
@@ -25,7 +34,11 @@ const AverageGraphTitle = styled.p`
   color: ${colors.tertiary};
   opacity: 0.5;
   max-width: 164px;
-  margin: 29px 0 0 34px;
+  margin: 24px 0 0 20px;
+  font-size: 15px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    margin: 29px 0 0 34px;
+  }
 `;
 
 /**

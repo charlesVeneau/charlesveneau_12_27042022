@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import breakpoints from '../../utils/style/breakpoints';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/context';
 import {
@@ -14,18 +15,25 @@ const ScoreGraph = styled.div`
   position: relative;
   border-radius: 5px;
   grid-column: 3;
-  height: 263px;
+  height: 228px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    height: 263px;
+  }
   &:before {
     content: '';
     background-color: ${colors.tertiary};
     position: absolute;
     border-radius: 150px;
-    width: calc(66px * 2);
-    height: calc(66px * 2);
+    width: calc(73px * 2);
+    height: calc(70px * 2);
     z-index: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    @media screen and (min-width: ${breakpoints.bigScreen}) {
+      width: calc(66px * 2);
+      height: calc(66px * 2);
+    }
   }
 `;
 
@@ -34,8 +42,12 @@ const ScoreGraphTitle = styled.p`
   font-size: 15px;
   font-weight: 500;
   position: absolute;
-  top: 24px;
-  left: 30px;
+  top: 8px;
+  left: 20px;
+  @media screen and (min-width: ${breakpoints.bigScreen}) {
+    top: 24px;
+    left: 30px;
+  }
 `;
 const ScoreGraphLegend = styled.p`
   color: ${colors.lowBlack};
