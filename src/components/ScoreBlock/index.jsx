@@ -6,8 +6,6 @@ import {
   RadialBarChart,
   RadialBar,
   PolarAngleAxis,
-  Legend,
-  Tooltip,
   ResponsiveContainer,
 } from 'recharts';
 
@@ -17,6 +15,18 @@ const ScoreGraph = styled.div`
   border-radius: 5px;
   grid-column: 3;
   height: 263px;
+  &:before {
+    content: '';
+    background-color: ${colors.tertiary};
+    position: absolute;
+    border-radius: 150px;
+    width: calc(66px * 2);
+    height: calc(66px * 2);
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 const ScoreGraphTitle = styled.p`
@@ -74,7 +84,6 @@ function ScoreBlock() {
               tick={false}
             />
             <RadialBar
-              background={{ fill: colors.tertiary }}
               clockWise
               dataKey="value"
               cornerRadius="50%"
