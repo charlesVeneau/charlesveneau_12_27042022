@@ -7,6 +7,11 @@ This project contains all the source code to run the front-end dashboard of the 
 You need to Clone/Download the project on your local machine and do the same with the backend in order to get answers from the API calls. Backend code [here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 A Mocked data is also available.
 
+Node version 16.13.2
+React version 18.1.0
+
+Developped on Visual Studi Code
+
 ## 1. Available Scripts
 
 In the project directory, you can run in the terminal at the root of your project:
