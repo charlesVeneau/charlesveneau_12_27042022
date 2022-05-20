@@ -16,7 +16,7 @@ const MainBlock = styled.div`
   grid-template-rows: calc(100vh - 91px);
 `;
 
-const Container = styled.div`
+const Container = styled.section`
   flex-grow: 1;
   padding: 69px 109px;
 `;
