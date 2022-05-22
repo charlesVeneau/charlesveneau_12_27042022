@@ -8,7 +8,7 @@ import breakpoints from '../../utils/style/breakpoints';
 
 const DashboardBlock = styled.section`
   display: grid;
-  grid-template-columns: repeat(1fr, 1fr, 1fr, 185px);
+  grid-template-columns: auto auto auto 185px;
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
   @media screen and (min-width: ${breakpoints.bigScreen}) {

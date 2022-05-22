@@ -20,7 +20,7 @@ const ScoreGraph = styled.div`
   @media screen and (min-width: ${breakpoints.bigScreen}) {
     height: 263px;
   }
-  &:before {
+  &.active:before {
     content: '';
     background-color: ${colors.tertiary};
     position: absolute;
@@ -78,9 +78,10 @@ function ScoreBlock() {
    * @type { Object[]}
    */
   const todayScore = [{ name: 'todayScore', value: data.todayScore * 100 }];
-  if (!isLoading && !error) {
+  console.log(isNaN(todayScore[0]));
+  if (!isLoading && !error && !isNaN(todayScore[0].value)) {
     return (
-      <ScoreGraph>
+      <ScoreGraph className="active">
         <ScoreGraphTitle>Score</ScoreGraphTitle>
         <ScoreGraphLegend>
           {data.todayScore * 100}% <span>de votre objectif</span>
@@ -109,10 +110,16 @@ function ScoreBlock() {
         </ResponsiveContainer>
       </ScoreGraph>
     );
+  } else if (isNaN(todayScore[0].value)) {
+    return (
+      <ScoreGraph>
+        <Error />
+      </ScoreGraph>
+    );
   } else if (error) {
     return (
       <ScoreGraph>
-        <Error />;
+        <Error />
       </ScoreGraph>
     );
   }

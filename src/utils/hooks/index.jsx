@@ -21,7 +21,7 @@ export function useAxios(endpoint) {
   /**
    * Set to true if you need to use mocked data
    * @type { Boolean } */
-  const isMockedData = false;
+  const isMockedData = true;
 
   useEffect(() => {
     if (!endpoint) return;

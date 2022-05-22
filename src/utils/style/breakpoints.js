@@ -1,5 +1,5 @@
 const breakpoints = {
-  bigScreen: '1444px',
+  bigScreen: '1440px',
 };
 
 export default breakpoints;
