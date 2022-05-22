@@ -1,6 +1,5 @@
 import { createContext } from 'react';
 import { useAxios } from '../hooks';
-import Error from '../../components/Error';
 
 export const UserContext = createContext();
 
@@ -12,6 +11,10 @@ export const UserContext = createContext();
  * @version 1.0
  */
 export const UserProvider = ({ children }) => {
+  /**
+   * Set hooks useAxios answer to a variable
+   * @type  { {data: Object, isLoading : Boolean, error: Boolean} }
+   */
   const { data, isLoading, error } = useAxios('/');
   return (
     <UserContext.Provider value={{ data, isLoading, error }}>

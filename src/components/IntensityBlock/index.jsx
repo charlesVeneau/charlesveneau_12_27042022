@@ -39,7 +39,7 @@ const CustomTextTick = styled.text`
  * @param { Number } x
  * @param { Number } y
  * @param { Object } payload
- * @returns { styled Html Element }
+ * @returns { HtmlElement } Recharts styled custom tick for the RadarChart Element
  */
 function CustomRadarLabel({ x, y, payload }) {
   const cos = Math.cos((-payload.coordinate * Math.PI) / 180);

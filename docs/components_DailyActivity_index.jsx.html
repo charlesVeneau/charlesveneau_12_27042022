@@ -1,4 +1,32 @@
-import styled from 'styled-components';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/DailyActivity/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/DailyActivity/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styled from 'styled-components';
 import Error from '../Error';
 import { useAxios } from '../../utils/hooks';
 import colors from '../../utils/style/color';
@@ -55,7 +83,7 @@ const GraphLegendText = styled.p`
   font-size: 14px;
   position: relative;
   margin: 0;
-  &:before {
+  &amp;:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -93,16 +121,16 @@ const CustomToolTipBlock = styled.div`
 function CustomToolTip({ payload, label, active }) {
   if (active) {
     return (
-      <CustomToolTipBlock className="custom-tooltip">
+      &lt;CustomToolTipBlock className="custom-tooltip">
         {payload.map((element, index) => {
           return (
-            <p key={`${element}-${index}`}>
+            &lt;p key={`${element}-${index}`}>
               {element.value}
               {element.dataKey === 'kilogram' ? 'kg' : 'kCal'}
-            </p>
+            &lt;/p>
           );
         })}
-      </CustomToolTipBlock>
+      &lt;/CustomToolTipBlock>
     );
   }
 }
@@ -121,7 +149,7 @@ function CustomXLabel({ x, y, payload }) {
    */
   const dayDate = payload.value.split('-')[payload.value.split('-').length - 1];
   return (
-    <text
+    &lt;text
       orientation="bottom"
       width="903"
       height="30"
@@ -134,7 +162,7 @@ function CustomXLabel({ x, y, payload }) {
       textAnchor="middle"
     >
       {dayDate[0] === '0' ? dayDate[1] : dayDate}
-    </text>
+    &lt;/text>
   );
 }
 
@@ -142,31 +170,31 @@ function DailyActivity() {
   const { data, isLoading, error } = useAxios(`/activity`);
   const { sessions } = data;
 
-  if (!isLoading && !error)
+  if (!isLoading &amp;&amp; !error)
     return (
-      <DailyGraph>
-        <GraphInfo>
-          <GraphTitle>Activité quotidienne</GraphTitle>
-          <GraphLegendBlock>
-            <GraphLegendText>Poids (kg)</GraphLegendText>
-            <GraphLegendText calories>Calories brûlées (kCal)</GraphLegendText>
-          </GraphLegendBlock>
-        </GraphInfo>
-        <ResponsiveContainer width="100%" height={215}>
-          <BarChart data={sessions} barCategoryGap={40}>
-            <CartesianGrid
+      &lt;DailyGraph>
+        &lt;GraphInfo>
+          &lt;GraphTitle>Activité quotidienne&lt;/GraphTitle>
+          &lt;GraphLegendBlock>
+            &lt;GraphLegendText>Poids (kg)&lt;/GraphLegendText>
+            &lt;GraphLegendText calories>Calories brûlées (kCal)&lt;/GraphLegendText>
+          &lt;/GraphLegendBlock>
+        &lt;/GraphInfo>
+        &lt;ResponsiveContainer width="100%" height={215}>
+          &lt;BarChart data={sessions} barCategoryGap={40}>
+            &lt;CartesianGrid
               vertical={false}
               strokeDasharray="4"
               horizontalPoints={[126, 63, 10]}
             />
-            <XAxis dataKey="day" axisLine={true} tick={CustomXLabel} />
-            <YAxis
+            &lt;XAxis dataKey="day" axisLine={true} tick={CustomXLabel} />
+            &lt;YAxis
               yAxisId="left"
               dataKey="calories"
               orientation="left"
               hide={true}
             />
-            <YAxis
+            &lt;YAxis
               yAxisId="right"
               dataKey="kilogram"
               orientation="right"
@@ -175,31 +203,54 @@ function DailyActivity() {
               type="number"
               domain={['dataMin - 2', 'dataMax + 2']}
             />
-            <Tooltip content={<CustomToolTip />} />
-            <Bar
+            &lt;Tooltip content={&lt;CustomToolTip />} />
+            &lt;Bar
               yAxisId="right"
               dataKey="kilogram"
               fill={colors.lowBlack}
               barSize={7}
               radius={[3, 3, 0, 0]}
             />
-            <Bar
+            &lt;Bar
               yAxisId="left"
               dataKey="calories"
               fill={colors.secondaryDarken}
               barSize={7}
               radius={[3, 3, 0, 0]}
             />
-          </BarChart>
-        </ResponsiveContainer>
-      </DailyGraph>
+          &lt;/BarChart>
+        &lt;/ResponsiveContainer>
+      &lt;/DailyGraph>
     );
   else if (error)
     return (
-      <DailyGraph>
-        <Error />
-      </DailyGraph>
+      &lt;DailyGraph>
+        &lt;Error />
+      &lt;/DailyGraph>
     );
 }
 
 export default DailyActivity;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addComaToNumber">addComaToNumber</a></li><li><a href="global.html#CustomRadarLabel">CustomRadarLabel</a></li><li><a href="global.html#CustomToolTip">CustomToolTip</a></li><li><a href="global.html#CustomXLabel">CustomXLabel</a></li><li><a href="global.html#useAxios">useAxios</a></li><li><a href="global.html#UserProvider">UserProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sun May 22 2022 22:41:00 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
