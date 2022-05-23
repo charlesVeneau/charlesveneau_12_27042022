@@ -123,7 +123,7 @@ function CustomXLabel({ x, y, payload }) {
   return (
     <text
       orientation="bottom"
-      width="903"
+      width="10"
       height="30"
       type="category"
       x={x}
@@ -133,7 +133,7 @@ function CustomXLabel({ x, y, payload }) {
       className="recharts-text recharts-cartesian-axis-tick-value"
       textAnchor="middle"
     >
-      {dayDate[0] === '0' ? dayDate[1] : dayDate}
+      <tspan>{dayDate[0] === '0' ? dayDate[1] : dayDate}</tspan>
     </text>
   );
 }
