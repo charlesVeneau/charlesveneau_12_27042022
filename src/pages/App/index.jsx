@@ -24,9 +24,9 @@ const MainBlock = styled.div`
 
 const Container = styled.section`
   flex-grow: 1;
-  padding: 30px 36px 0;
+  margin: 30px 36px 0;
   @media screen and (min-width: ${breakpoints.bigScreen}) {
-    padding: 69px 109px;
+    margin: 69px 109px;
   }
 `;
 
