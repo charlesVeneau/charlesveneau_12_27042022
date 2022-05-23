@@ -4,8 +4,19 @@
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(nodes_modules/|docs)"
   },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
   "opts": {
     "recurse": true,
-    "destination": "./docs/"
+    "destination": "./docs/",
+    "readme": "./README.md",
+    "template": "./jsdocTemplate"
   }
 }
