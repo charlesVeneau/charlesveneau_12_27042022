@@ -93,7 +93,7 @@ function addComaToNumber(value) {
 
 function CounterCard({ keyData, value }) {
   /**
-   * @type { String}
+   * @return Data name in french
    */
   const keyDataFrench = () => {
     switch (keyData) {
